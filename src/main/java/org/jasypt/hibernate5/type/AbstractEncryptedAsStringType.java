@@ -28,7 +28,6 @@ import java.util.Properties;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
-import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 import org.jasypt.encryption.pbe.PBEStringEncryptor;
@@ -146,17 +145,8 @@ public abstract class AbstractEncryptedAsStringType
     }
 
 
-    public Object nullSafeGet( ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner ) throws HibernateException, SQLException
-    {
 
-        checkInitialization();
-        final String message = rs.getString(names[0]);
-        return rs.wasNull() ? null : convertToObject(this.encryptor.decrypt(message));
-
-    }
-
-
-    public void nullSafeSet( PreparedStatement st, Object value, int index, SharedSessionContractImplementor session ) throws HibernateException, SQLException
+    public void nullSafeSet( PreparedStatement st, Object value, int index, SessionImplementor session) throws HibernateException, SQLException
     {
 
         checkInitialization();

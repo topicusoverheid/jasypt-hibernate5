@@ -148,7 +148,7 @@
         </configuration>
       </plugin>
       
-      <plugin>
+      <!--<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.7</version>
@@ -168,7 +168,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin>-->
       
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -184,7 +184,7 @@
         </executions>
       </plugin>
       
-      <plugin>
+      <!--<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
         <version>1.1</version>
@@ -206,7 +206,7 @@
         <configuration>
           <tagBase>https://svn.code.sf.net/p/jasypt/code/tags/jasypt-hibernate4</tagBase>
         </configuration>
-      </plugin>
+      </plugin>-->
 
 
     </plugins>
@@ -223,15 +223,16 @@
       <version>1.9.3-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>5.2.2.Final</version>
+      <artifactId>hibernate-envers</artifactId>
+      <version>5.1.8.Final</version>
       <scope>provided</scope>
       <optional>true</optional>
     </dependency>
 
+    <!-- Casting doesn't use C3P0 so using this version doesn't seem to cause a issue. Just need it to compile -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-c3p0</artifactId>

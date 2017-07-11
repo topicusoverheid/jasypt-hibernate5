@@ -30,7 +30,6 @@ import java.util.Properties;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
-import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 import org.jasypt.encryption.pbe.PBEBigIntegerEncryptor;
@@ -186,7 +185,7 @@ public final class EncryptedBigIntegerType implements UserType, ParameterizedTyp
 
     
     public Object nullSafeGet(final ResultSet rs, final String[] names,
-            final SharedSessionContractImplementor session, final Object owner)
+            final SessionImplementor session, final Object owner)
             throws HibernateException, SQLException {
         checkInitialization();
         final BigDecimal decimalMessage = rs.getBigDecimal(names[0]);
@@ -201,7 +200,7 @@ public final class EncryptedBigIntegerType implements UserType, ParameterizedTyp
 
     
     public void nullSafeSet(final PreparedStatement st, final Object value, final int index,
-            final SharedSessionContractImplementor session)
+            final SessionImplementor session)
             throws HibernateException, SQLException {
         checkInitialization();
         if (value == null) {
