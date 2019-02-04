@@ -19,14 +19,6 @@
  */
 package org.jasypt.hibernate5.type;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
-import java.util.Properties;
-
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.ParameterizedType;
@@ -36,6 +28,14 @@ import org.jasypt.encryption.pbe.StandardPBEBigDecimalEncryptor;
 import org.jasypt.exceptions.EncryptionInitializationException;
 import org.jasypt.hibernate5.encryptor.HibernatePBEBigDecimalEncryptor;
 import org.jasypt.hibernate5.encryptor.HibernatePBEEncryptorRegistry;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.Properties;
 
 /**
  * <p>
@@ -206,7 +206,6 @@ public final class EncryptedBigDecimalType implements UserType, ParameterizedTyp
         return original;
     }
 
-    
     public Object nullSafeGet(final ResultSet rs, final String[] names,
             final SharedSessionContractImplementor session, final Object owner)
             throws HibernateException, SQLException {

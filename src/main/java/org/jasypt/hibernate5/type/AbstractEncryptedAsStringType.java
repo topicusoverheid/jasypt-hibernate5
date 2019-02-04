@@ -19,15 +19,7 @@
  */
 package org.jasypt.hibernate5.type;
 
-import java.io.Serializable;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
-import java.util.Properties;
-
 import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
@@ -35,6 +27,13 @@ import org.jasypt.encryption.pbe.PBEStringEncryptor;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.exceptions.EncryptionInitializationException;
 import org.jasypt.hibernate5.encryptor.HibernatePBEEncryptorRegistry;
+
+import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.Properties;
 
 /**
  *
@@ -136,7 +135,7 @@ public abstract class AbstractEncryptedAsStringType
 
     
     public Object nullSafeGet(final ResultSet rs, final String[] names,
-            final SessionImplementor session, final Object owner)
+            final SharedSessionContractImplementor session, final Object owner)
             throws HibernateException, SQLException {
         
         checkInitialization();
@@ -146,17 +145,8 @@ public abstract class AbstractEncryptedAsStringType
     }
 
 
-    public Object nullSafeGet( ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner ) throws HibernateException, SQLException
-    {
 
-        checkInitialization();
-        final String message = rs.getString(names[0]);
-        return rs.wasNull() ? null : convertToObject(this.encryptor.decrypt(message));
-
-    }
-
-
-    public void nullSafeSet( PreparedStatement st, Object value, int index, SharedSessionContractImplementor session ) throws HibernateException, SQLException
+    public void nullSafeSet( PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException
     {
 
         checkInitialization();

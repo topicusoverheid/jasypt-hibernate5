@@ -147,7 +147,7 @@
           <encoding>US-ASCII</encoding>
         </configuration>
       </plugin>
-     <!-- 
+     <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -183,7 +183,7 @@
           </execution>
         </executions>
       </plugin>
-     <!-- 
+     <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
@@ -198,7 +198,7 @@
           </execution>
         </executions>
       </plugin>
-      -->
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
@@ -207,16 +207,13 @@
           <tagBase>https://svn.code.sf.net/p/jasypt/code/tags/jasypt-hibernate4</tagBase>
         </configuration>
       </plugin>
-
-
+      -->
     </plugins>
-    
   </build>
 
 
 
   <dependencies>
-    
     <dependency>
       <groupId>org.jasypt</groupId>
       <artifactId>jasypt</artifactId>
@@ -232,6 +229,7 @@
       <optional>true</optional>
     </dependency>
 
+    <!-- Casting doesn't use C3P0 so using this version doesn't seem to cause a issue. Just need it to compile -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-c3p0</artifactId>
@@ -260,8 +258,5 @@
         <version>2.2.6</version>
         <scope>test</scope>
     </dependency>
-    
   </dependencies>
-
-  
 </project>

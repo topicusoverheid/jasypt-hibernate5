@@ -25,7 +25,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.jasypt.hibernate5.encryptor.HibernatePBEEncryptorRegistry;
 import org.jasypt.hibernate5.encryptor.HibernatePBEStringEncryptor;
 

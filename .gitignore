@@ -34,6 +34,12 @@
 
 # IntelliJ
 /out/
+.idea/checkstyle-idea.xml
+.idea/compiler.xml
+.idea/hotswap_agent.xml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
